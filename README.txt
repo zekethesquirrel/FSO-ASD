@@ -1,0 +1,1 @@
+Pack It! is a work-in-progress app being developed for my class work at Full Sail University. I've received a lot of great feedback on it so far, and will hopefully be able to release a full, stable version on the iOS app store and/or Google Play store when I'm finished with my school work.
