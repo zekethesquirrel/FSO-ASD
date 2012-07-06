@@ -35,9 +35,9 @@ $(document).ready(function(){
 			makeOptions.setAttribute("value", optText);
 			makeOptions.innerHTML = optText;
 			selectSelect.appendChild(makeOptions);
-		};
-	};
-	// Find checkbox value
+        }
+    }
+    // Find checkbox value
 	/*function getSelectedCheck(){
 		if(GE('packed').checked){
 			packedValue = GE('packed').value;
@@ -70,22 +70,22 @@ $(document).ready(function(){
 		}else{//If key exists, edit existing item
 			key = key;
 			var alertTxt = "Item updated!";
-		};
-		//Get form values and create a string
+        }
+        //Get form values and create a string
 		var data = addForm.serialize();
 		//Save form data to local storage
 		localStorage.setItem(key, data);
 		alert(alertTxt);
-		$('span.ui-controlgroup-last').html('Add Item')
+		$('span.ui-controlgroup-last').html('Add Item');
 		getLocalData();
 	};
 	// Retrieve local storage and display it
 	var getLocalData = function (){
 		if(localStorage.length === 0){
-			alert("No data in local storage. Loading test data.")
+			alert("No data in local storage. Loading test data.");
 			autoFill();
-		};
-		//Write data from local storage
+        }
+        //Write data from local storage
 		$("#itemList").empty();
 		//Loop through data and make list items
 		for(var i=0, j=localStorage.length; i<j; i++){
@@ -114,10 +114,10 @@ $(document).ready(function(){
 			editLink.html(optSubText);
 			//Append edit and delete links to the list
 			makeLI.append(editLink, deleteLink).appendTo("#itemList");
-		};
-	$("#itemList").listview('refresh');
+        }
+        $("#itemList").listview('refresh');
 	};
-	// Edit Item Funciton
+	// Edit Item Function
 	var editItem = function (id){
 		//Get info from local storage
 		var key = parseInt(id.match(/\d+/g));
@@ -132,9 +132,9 @@ $(document).ready(function(){
 		// Remove listener for add item
 		//submitLink.removeEventListener("click", submitData);
 		//Change "Add Item" to "Edit Item"
-		$('span.ui-controlgroup-last').html('Edit Item')
+		$('span.ui-controlgroup-last').html('Edit Item');
 		// Save key value as property of #addItem
-		$('#addItem').attr('key', key)
+		$('#addItem').attr('key', key);
 		//Refresh the select menus
 		$('select#cats').selectmenu('refresh');
 		$('select#packed').slider('refresh');
@@ -145,12 +145,12 @@ $(document).ready(function(){
 		var key = parseInt(id.match(/\d+/g));
 		if(ask){
 			localStorage.removeItem(key);
-			alert("Item deleted!")
+			alert("Item deleted!");
 			getLocalData();
 		}else{
 			alert("Item NOT deleted.")
-		};
-	};
+        }
+    };
 	//Validate function
 	function validate(e){
 		//Define elements to check
@@ -167,54 +167,54 @@ $(document).ready(function(){
 			var catErr = "Please select a category!";
 			getCat.style.border = "1px solid red";
 			errMess.push(catErr);
-		};
-		//Item name validation
+        }
+        //Item name validation
 		if(getName.value === ""){
 			var nameErr = "Item needs a name!";
 			getName.style.border = "1px solid red";
 			errMess.push(nameErr);
-		};
-		//Display errors if any
+        }
+        //Display errors if any
 		if(errMess.length >= 1){
 			for(var i=0, j=errMess.length; i<j; i++){
 				var txt = document.createElement('li');
 				txt.innerHTML = errMess[i];
 				errMsg.appendChild(txt);
-			};
-			e.preventDefault();
+            }
+            e.preventDefault();
 			return false;
 		}else{
 			//If validation passes, submit data with key
 			submitData(this.key);
-		};
-	};
-	//Load data from json.js and store in local storage
+        }
+    }
+    //Load data from json.js and store in local storage
 	var autoFill = function (){
-		alert("Running Autofill Function!")
+		alert("Running Autofill Function!");
 		for(var n in json){
 			var id = Math.floor(Math.random()*10000000000);
 			localStorage.setItem(id, JSON.stringify(json[n]));
-		};		
-	};
+        }
+    };
 	// Clear local storage
 	var clearLocalData = function (){
 		if(localStorage.length === 0){
 			alert("Packing list is already empty!");
 		}else{
-			var ask = confirm("Delete ALL items? This can not be undone.")
+			var ask = confirm("Delete ALL items? This can not be undone.");
 			if(ask){
 				localStorage.clear();
 				alert("Packing list cleared!");
 				return false;
 			}else{
 				alert("Packing list not cleared.")
-			};
-		};
-	};
+            }
+        }
+    };
 	//Variable Defaults
 	var typeGroups = ["Food", "Utility", "Survival", "Comfort", "Fun"],
-		packedValue = "No",
-		errMsg = GE('errors');
+        packedValue = "No",
+        errMsg = GE('errors');
 		browseCat = GE('browse');
 	makeCats();
 

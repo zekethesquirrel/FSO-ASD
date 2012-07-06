@@ -46,34 +46,40 @@
         <img id="cta" src="images/bkpk.png" width="310"/>
 
         <div>
-            <p>Pack It! is a simple packing list app to make sure you don't forget anything.</p>
+            <p>Pack It&#33; is a simple packing list app to make sure you don't forget anything.</p>
         </div>
-        <a data-role="button" data-icon="arrow-r" data-iconpos="right" href="#add" data-transition="slide">Start Packing&#33;</a>
-        <a data-role="button" data-icon="check" data-iconpos="right" href="#add" data-transition="slide">View List</a>
+        <p><a data-role="button" data-icon="arrow-r" data-iconpos="right" href="#add" data-transition="slide">Start Packing&#33;</a>
+        <a data-role="button" data-icon="check" data-iconpos="right" href="#list" data-transition="slide">View List</a></p>
         <ul data-role="listview" id="browse" data-filter="true">
-            <li data-role="list-divider"><h2>Browse List by Category:</h2></li>
-            <li><a href="#soon"><img src="images/icons/Food.png"/>
-
-                <h3>Food</h3></a></li>
-            <li><a href="#soon"><img src="images/icons/Utility.png"/>
-
-                <h3>Utility</h3></a></li>
-            <li><a href="#soon"><img src="images/icons/Survival.png"/>
-
-                <h3>Survival</h3></a></li>
-            <li><a href="#soon"><img src="images/icons/Comfort.png"/>
-
-                <h3>Comfort</h3></a></li>
+            <li data-role="list-divider">
+                <h2>Browse List by Category:</h2>
+            </li>
+            <li>
+                <a href="#soon"><img src="images/icons/Food.png"/>
+                <h3>Food</h3></a>
+            </li>
+            <li>
+                <a href="#soon"><img src="images/icons/Utility.png"/>
+                <h3>Utility</h3></a>
+            </li>
+            <li>
+                <a href="#soon"><img src="images/icons/Survival.png"/>
+                <h3>Survival</h3></a>
+            </li>
+            <li>
+                <a href="#soon"><img src="images/icons/Comfort.png"/>
+                <h3>Comfort</h3></a>
+            </li>
             <li><a href="#soon"><img src="images/icons/Fun.png"/>
-
-                <h3>Fun</h3></a></li>
+                <h3>Fun</h3></a>
+            </li>
         </ul>
     </div>
     <!-- Footer -->
     <div data-role="footer" data-position="fixed" data-id="universal">
         <div data-role="navbar">
             <ul>
-                <li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
+                <li><a href="#home" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
                 <li><a href="#add" data-icon="plus" data-transition="slide">Add Item</a></li>
                 <li><a href="#recent" data-icon="star" data-transition="slide">Recent Items</a></li>
             </ul>
@@ -90,79 +96,55 @@
     </div>
     <!-- Content -->
     <div data-role="content">
-        <form action="" method="POST" data-ajax="false">
+        <form action="" method="POST"  id="itemForm" data-ajax="false"><!-- Add Item Form -->
             <div>
                 <p style="text-align: center; ">
-                    <b>
-                        Add an Item
-                    </b>
+                    <b>Add an Item</b>
                 </p>
             </div>
-            <div data-role="fieldcontain">
+            <div data-role="fieldcontain"><!-- Item Name -->
                 <fieldset data-role="controlgroup" data-mini="true">
-                    <label for="textinput1">
-                        Name
-                    </label>
-                    <input id="textinput1" placeholder="Apples" value="" type="text"/>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" value="" placeholder="Apples" class="required"/>
                 </fieldset>
             </div>
-            <div data-role="fieldcontain">
-                <label for="selectmenu1">
-                    Category
-                </label>
-                <select name="selectmenu1" id="selectmenu1" data-mini="true">
-                    <option value="Placeholder">
-                        Choose a Category:
-                    </option>
-                    <option value="Value 1">
-                        Option 1
-                    </option>
+            <div data-role="fieldcontain"><!-- Category Selection -->
+                <label for="cats">Category</label>
+                <select name="cats" id="cats" data-mini="true">
+                    <option data-placegolder="true" value="">Choose a Category</option>
+                    <!--Options added via JS -->
                 </select>
             </div>
-            <div data-role="fieldcontain">
+            <div data-role="fieldcontain"><!-- Range Slider -->
                 <fieldset data-role="controlgroup" data-mini="true">
-                    <label for="slider1">
-                        Weight
-                    </label>
-                    <input type="range" name="slider" id="slider1" value="5" min="0" max="20" data-highlight="true"
-                           data-theme="" data-track-theme=""/>
+                    <label for="wght">Weight</label>
+                    <input type="range" name="wght" id="wght" value="5" min="0" max="20" data-highlight="true"/>
                 </fieldset>
             </div>
-            <div data-role="fieldcontain">
+            <div data-role="fieldcontain"><!-- Packed Toggle Slider -->
                 <fieldset data-role="controlgroup">
-                    <label for="toggleswitch1">
-                        Packed
-                    </label>
-                    <select name="toggleswitch1" id="toggleswitch1" data-theme="" data-role="slider" data-mini="true">
-                        <option value="off">
-                            No
-                        </option>
-                        <option value="on">
-                            Yes
-                        </option>
+                    <label for="packed">Packed</label>
+                    <select name="packed" id="packed" data-theme="" data-role="slider" data-mini="true">
+                        <option value="off">No</option>
+                        <option value="on">Yes</option>
                     </select>
                 </fieldset>
             </div>
-            <div data-role="fieldcontain">
+            <div data-role="fieldcontain"><!-- Date Packed -->
                 <fieldset data-role="controlgroup" data-mini="true">
-                    <label for="textinput2">
-                        Date Packed
-                    </label>
-                    <input id="textinput2" placeholder="" value="" type="date"/>
+                    <label for="pdate">Date Packed</label>
+                    <input name="pdate" id="pdate" placeholder="" value="" type="date"/>
                 </fieldset>
             </div>
-            <div data-role="fieldcontain">
+            <div data-role="fieldcontain"><!-- Notes Field -->
                 <fieldset data-role="controlgroup">
-                    <label for="textarea1">
-                        Notes
-                    </label>
-                    <textarea id="textarea1" placeholder="Add notes here..." data-mini="true">
+                    <label for="note">Notes</label>
+                    <textarea name="note" id="note" placeholder="Add notes here&hellip;" data-mini="true">
                     </textarea>
                 </fieldset>
             </div>
-            <input type="submit" data-theme="b" data-icon="plus" data-iconpos="right" value="Add Item"
-                   data-mini="true"/>
-            <input type="submit" data-theme="c" data-icon="alert" data-iconpos="right" value="Clear" data-mini="true"/>
+            <input type="submit" id="addItem" data-theme="b" data-icon="plus" data-iconpos="right" value="Add Item" data-mini="true"/>
+            <input type="reset" id="reset" data-theme="c" data-icon="alert" data-iconpos="right" value="Clear" data-mini="true"/>
         </form>
     </div>
     <!-- Footer -->
@@ -170,7 +152,7 @@
         <div data-role="navbar">
             <ul>
                 <li><a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Home</a></li>
-                <li><a href="#add" data-icon="plus" class="ui-btn-active">Add Item</a></li>
+                <li><a href="#add" data-icon="plus" class="ui-btn-active ui-state-persist">Add Item</a></li>
                 <li><a href="#recent" data-icon="star" data-transition="slide">Recent Items</a></li>
             </ul>
         </div>
@@ -309,7 +291,7 @@
             <ul>
                 <li><a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Home</a></li>
                 <li><a href="#add" data-icon="plus" data-transition="slide" data-direction="reverse">Add Item</a></li>
-                <li><a href="#recent" data-icon="star" class="ui-btn-active">Recent Items</a></li>
+                <li><a href="#recent" data-icon="star" class="ui-btn-active ui-state-persist">Recent Items</a></li>
             </ul>
         </div>
     </div>
